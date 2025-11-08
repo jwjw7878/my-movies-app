@@ -1,0 +1,51 @@
+.movie-card {
+  width: 220px;
+  height: 330px;
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(43, 41, 41, 0.9);
+  transition: all 1s;
+  font-weight: bold;
+  overflow-wrap: break-word;
+}
+.overlay:hover {
+  opacity: 1;
+}
+.movie-card:hover {
+  transform: scale(1.3) translateZ(20px);
+  z-index: 2;
+}
+
+.overlay .top-banner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  top: 0;
+  right: 0;
+  background-color: red;
+}
+.overlay .overlay-title {
+  width: 80%;
+  margin: 20px 0;
+}
+.overlay .overlay-genre {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 6px;
+}
+.overlay-genre li {
+  padding: 2px;
+  border: 1px solid white;
+  border-radius: 6px;
+}
