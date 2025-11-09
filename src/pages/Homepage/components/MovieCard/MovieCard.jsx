@@ -1,12 +1,26 @@
-import React from "react";
 import "./MovieCard.style.css";
 import { useGenreforIds } from "../../../../hooks/useGenreIds";
+import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
+import { PiFilmSlate } from "react-icons/pi";
+import { MdStarRate } from "react-icons/md";
 const MovieCard = ({ movie }) => {
   const { data, isLoading } = useGenreforIds();
 
   if (isLoading) return <p>...Loading</p>;
 
   const genreName = Object.fromEntries(data?.map((g) => [g.id, g.name]));
+  // 평점 기능
+  const ratingGraph = (rated) => {
+    if (rated >= 8) {
+      return "green";
+    } else if (rated >= 7) {
+      return "light-green";
+    } else if (rated >= 5) {
+      return "yellow";
+    } else {
+      return "red";
+    }
+  };
 
   return (
     <div
@@ -19,18 +33,48 @@ const MovieCard = ({ movie }) => {
       }}
     >
       <div className="overlay">
+        {movie.adult ? (
+          <div className="adult true">
+            <FaArrowUp /> 18
+          </div>
+        ) : (
+          <div className="adult false">
+            <FaArrowDown /> 18
+          </div>
+        )}
+        <p className="overlay-release">
+          <FaCalendarAlt /> {movie.release_date}
+        </p>
         <h1 className="overlay-title">{movie.title}</h1>
         <ul className="overlay-genre">
           {movie.genre_ids.map((id) => (
             <li>{genreName[id]}</li>
           ))}
         </ul>
-        <div>{movie.vote_average}</div>
-        <div>{movie.popularity}</div>
+        <div className="overlay-rating">
+          <div className="graph">
+            <div
+              className={`${ratingGraph(
+                Number(movie.vote_average).toFixed(1)
+              )}`}
+              style={{
+                width: `${Number(movie.vote_average).toFixed(1) * 10}%`,
+                height: "100%",
+              }}
+            ></div>
+          </div>
+          <p className="rated-score">
+            <MdStarRate />
+            {Number(movie.vote_average).toFixed(1)}
+          </p>
+        </div>
         <div>{movie.adult ? "18" : ""}</div>
         <div className="top-banner">
           <h3>Top</h3>
           <p>20</p>
+        </div>
+        <div className="detail">
+          <PiFilmSlate /> Detail
         </div>
       </div>
     </div>

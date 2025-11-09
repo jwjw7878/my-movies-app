@@ -10,6 +10,7 @@
   width: 100%;
   height: 100%;
   opacity: 0;
+  padding: 6px;
   background-color: rgba(43, 41, 41, 0.9);
   transition: all 1s;
   font-weight: bold;
@@ -22,7 +23,17 @@
   transform: scale(1.3) translateZ(20px);
   z-index: 2;
 }
-
+.overlay .adult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  width: 20%;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 10px;
+  color: black;
+}
 .overlay .top-banner {
   position: absolute;
   display: flex;
@@ -34,18 +45,68 @@
   right: 0;
   background-color: red;
 }
+.overlay .overlay-release {
+  font-size: 14px;
+}
 .overlay .overlay-title {
   width: 80%;
   margin: 20px 0;
+  font-size: 20px;
 }
 .overlay .overlay-genre {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   align-items: center;
   gap: 6px;
+  font-size: 14px;
 }
 .overlay-genre li {
   padding: 2px;
   border: 1px solid white;
   border-radius: 6px;
+}
+.overlay .overlay-rating {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.overlay .rated-score {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.overlay .graph {
+  margin: 10px 0;
+  width: 80%;
+  height: 8px;
+  border: 1px solid white;
+}
+.graph .green {
+  background: linear-gradient(to right, #00a000, #00ff00);
+}
+
+.graph .light-green {
+  background: linear-gradient(to right, #90ee90, #c8ffc8);
+}
+
+.graph .yellow {
+  background: linear-gradient(to right, #f6d200, #fff17a);
+}
+
+.graph .red {
+  background: linear-gradient(to right, #d10000, #ff6b6b);
+}
+
+.overlay .detail {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  width: 50%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }

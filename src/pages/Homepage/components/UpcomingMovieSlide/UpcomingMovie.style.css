@@ -1,0 +1,8 @@
+.carousel-container {
+  overflow: hidden;
+  height: 440px;
+}
+.popular-title {
+  font-size: 32px;
+  margin: 20px 50px;
+}
