@@ -12,11 +12,11 @@ const responsive = {
     items: 6,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    breakpoint: { max: 1024, min: 576 },
+    items: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 576, min: 0 },
     items: 1,
   },
 };
@@ -43,13 +43,15 @@ const UpcomingMovie = () => {
       <h3 className="popular-title">Upcoming Movies</h3>
       <Carousel
         infinite={true}
-        centerMode={true}
+        autoPlay={true}
+        autoPlaySpeed={3500}
+        centerMode={false}
         itemClass="movie-slider p-1"
         containerClass="carousel-container"
         responsive={responsive}
       >
         {data.results.map((movie, idx) => (
-          <MovieCard movie={movie} key={idx} />
+          <MovieCard movie={movie} key={idx} num={idx} />
         ))}
       </Carousel>
     </div>

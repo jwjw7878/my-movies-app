@@ -1,6 +1,11 @@
 .carousel-container {
   overflow: hidden;
   height: 440px;
+  padding: 0 10px;
+}
+.movie-slider {
+  display: flex;
+  justify-content: center;
 }
 .popular-title {
   font-size: 32px;

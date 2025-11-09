@@ -3,7 +3,7 @@ import { useGenreforIds } from "../../../../hooks/useGenreIds";
 import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
 import { PiFilmSlate } from "react-icons/pi";
 import { MdStarRate } from "react-icons/md";
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, num }) => {
   const { data, isLoading } = useGenreforIds();
 
   if (isLoading) return <p>...Loading</p>;
@@ -32,6 +32,7 @@ const MovieCard = ({ movie }) => {
           ")",
       }}
     >
+      <p className="num">{num + 1}</p>
       <div className="overlay">
         {movie.adult ? (
           <div className="adult true">
