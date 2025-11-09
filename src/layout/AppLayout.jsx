@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { GrSearch } from "react-icons/gr";
 import "./AppLayout.style.css";
+import MobileNav from "./MobileNav";
 
 const AppLayout = () => {
   const [showInput, setShowInput] = useState(false);
+  const [showMobileNav, setShowMobileNav] = useState(false);
   const buttonHandler = () => {
     setShowInput(!showInput);
   };
@@ -28,9 +30,17 @@ const AppLayout = () => {
             placeholder="찾으시는 컨텐츠를 입력하세요"
           />
           <GrSearch className="search-icon" onClick={buttonHandler} />
-          <div className="profile-icon"></div>
+          <div
+            className="profile-icon"
+            onClick={() => {
+              setShowMobileNav(!showMobileNav);
+            }}
+          ></div>
         </div>
       </header>
+      {showMobileNav && (
+        <MobileNav showInput={showInput} buttonHandler={buttonHandler} />
+      )}
       <Outlet />
     </>
   );

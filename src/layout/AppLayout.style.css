@@ -1,4 +1,8 @@
 header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   padding: 20px 50px;
@@ -67,12 +71,14 @@ header .search-area {
   header {
     padding: 20px;
   }
-
-  .search-area {
-    width: 100%;
-    justify-content: flex-start;
+  .search-area input,
+  .search-area .search-icon {
+    display: none;
   }
-
+  .search-area .profile-icon {
+    position: relative;
+    cursor: pointer;
+  }
   .logo-menu {
     gap: 20px;
   }
