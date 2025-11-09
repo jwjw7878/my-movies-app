@@ -4,6 +4,7 @@ header {
   padding: 20px 50px;
   font-family: "Bebas Neue", sans-serif;
   background-color: black;
+  overflow-x: hidden;
   justify-content: space-between;
 }
 header .logo-menu {
@@ -61,4 +62,22 @@ header .search-area {
 .input.active {
   transition: all 0.3s ease-in;
   width: 60%;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 20px;
+  }
+
+  .search-area {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo-menu {
+    gap: 20px;
+  }
+
+  .logo-menu nav {
+    gap: 20px;
+  }
 }

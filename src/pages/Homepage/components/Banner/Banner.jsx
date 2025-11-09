@@ -9,14 +9,14 @@ import { useGenreforIds } from "../../../../hooks/useGenreIds";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMovies();
-  const { data: genres } = useGenreforIds();
+  const { data: genres, isLoading: isGenreLoading } = useGenreforIds();
 
-  if (isLoading) return <p>...Loading</p>;
+  const genreName =
+    genres && Array.isArray(genres)
+      ? Object.fromEntries(genres.map((g) => [g.id, g.name]))
+      : {};
 
-  const genreName = Object.fromEntries(genres?.map((g) => [g.id, g.name]));
-
-  console.log(data?.results);
-  if (isLoading)
+  if (isLoading || isGenreLoading)
     return (
       <CircularProgress
         size={100}

@@ -11,6 +11,7 @@
   background: linear-gradient(to top, black, transparent);
   position: absolute;
   left: 0;
+  right: 0;
   height: 56vh;
   width: 100%;
 }
@@ -69,7 +70,7 @@
   right: 0px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .banner .text-area {
     width: 100%;
   }
