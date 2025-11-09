@@ -23,7 +23,7 @@ const responsive = {
 
 const UpcomingMovie = () => {
   const { data, isError, error, isLoading } = useUpcomingMovies();
-  console.log(data);
+
   if (isError) return <Alert severity="error">{error.message}</Alert>;
   if (isLoading)
     return (

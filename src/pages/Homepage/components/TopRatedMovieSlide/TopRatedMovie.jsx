@@ -24,7 +24,7 @@ const responsive = {
 
 const TopRatedMovie = () => {
   const { data, isError, error, isLoading } = useTopRatedMovie();
-  console.log(data);
+
   if (isError) return <Alert severity="error">{error.message}</Alert>;
   if (isLoading)
     return (
