@@ -1,5 +1,5 @@
 import "./MovieCard.style.css";
-import { useGenreforIds } from "../../../../hooks/useGenreIds";
+import { useGenreforIds } from "../../hooks/useGenreIds";
 import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
 import { PiFilmSlate } from "react-icons/pi";
 import { MdStarRate } from "react-icons/md";

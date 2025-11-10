@@ -1,25 +1,9 @@
 import React from "react";
-import "./UpcomingMovie.style.css";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Alert from "@mui/material/Alert";
+import MoviesSlider from "../../../../common/MoviesSlider/MoviesSlider";
 import { CircularProgress } from "@mui/material";
-import MovieCard from "../MovieCard/MovieCard";
 import { useUpcomingMovies } from "../../../../hooks/useUpcomingMovie";
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 576 },
-    items: 3,
-  },
-  mobile: {
-    breakpoint: { max: 576, min: 0 },
-    items: 1,
-  },
-};
 
 const UpcomingMovie = () => {
   const { data, isError, error, isLoading } = useUpcomingMovies();
@@ -40,20 +24,7 @@ const UpcomingMovie = () => {
     );
   return (
     <div>
-      <h3 className="popular-title">Upcoming Movies</h3>
-      <Carousel
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={3500}
-        centerMode={false}
-        itemClass="movie-slider p-1"
-        containerClass="carousel-container"
-        responsive={responsive}
-      >
-        {data.results.map((movie, idx) => (
-          <MovieCard movie={movie} key={idx} num={idx} />
-        ))}
-      </Carousel>
+      <MoviesSlider data={data} title="Upcoming Movies" />
     </div>
   );
 };
