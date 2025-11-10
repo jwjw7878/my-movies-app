@@ -5,10 +5,15 @@ import { PiFilmSlate } from "react-icons/pi";
 import { MdStarRate } from "react-icons/md";
 const MovieCard = ({ movie, num }) => {
   const { data, isLoading } = useGenreforIds();
-
   if (isLoading) return <p>...Loading</p>;
 
-  const genreName = Object.fromEntries(data?.map((g) => [g.id, g.name]));
+  const genreIdforName = (genre_ids) => {
+    const genreName = genre_ids.map((g) => {
+      return data.find((genre) => genre.id === g);
+    });
+    return genreName;
+  };
+
   // 평점 기능
   const ratingGraph = (rated) => {
     if (rated >= 8) {
@@ -48,8 +53,8 @@ const MovieCard = ({ movie, num }) => {
         </p>
         <h1 className="overlay-title">{movie.title}</h1>
         <ul className="overlay-genre">
-          {movie.genre_ids.map((id) => (
-            <li>{genreName[id]}</li>
+          {genreIdforName(movie.genre_ids).map((genre) => (
+            <li>{genre.name}</li>
           ))}
         </ul>
         <div className="overlay-rating">
