@@ -27,6 +27,32 @@
 .movies-page .top-banner {
   display: none;
 }
+.movies-page .page-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 80px;
+}
+.page-input .total-pages {
+  font-size: 28px;
+  margin: 0;
+}
+.page-input input {
+  width: 80px;
+  padding: 4px;
+  border-radius: 12px;
+  font-size: 28px;
+}
+.page-input button {
+  padding: 6px;
+  border-radius: 12px;
+  background-color: red;
+  color: white;
+  border: none;
+  outline: none;
+  margin-left: 12px;
+}
 .pagination {
   display: flex;
   align-items: center;

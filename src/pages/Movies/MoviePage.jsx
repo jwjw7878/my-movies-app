@@ -12,11 +12,12 @@ const MoviePage = () => {
   const [page, setPage] = useState(1);
   const [query] = useSearchParams();
   const keyword = query.get("q");
+  const [inputPage, setInputPage] = useState(1);
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
   };
-  console.log(page);
+
   const { data, isLoading, error, isError } = useSearchMovies({
     keyword,
     page,
@@ -25,7 +26,19 @@ const MoviePage = () => {
   useEffect(() => {
     setPage(1);
   }, [keyword]);
-  console.log(data);
+
+  // 페이지 검색
+  const submitPage = () => {
+    if (inputPage > Math.min(data.total_pages, 500)) {
+      return alert("정해진 범위 내 숫자를 입력해주세요");
+    } else if (typeof inputPage !== "number") {
+      return alert("숫자 이외에 문자를 입력할 수 없습니다.");
+    }
+    setPage(inputPage);
+  };
+  useEffect(() => {
+    setInputPage(page);
+  }, [page]);
 
   if (isLoading)
     return (
@@ -51,16 +64,16 @@ const MoviePage = () => {
             <span>{data.total_results}</span>개의 영화가 존재합니다.
           </h2>
           <div className="container">
-            {data.results.map((movie, idx) => (
+            {data?.results?.map((movie, idx) => (
               <MovieCard movie={movie} key={idx} />
             ))}
           </div>
           <ReactPaginate
             nextLabel=">"
             onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            marginPagesDisplayed={2}
-            pageCount={data.total_pages}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={false}
+            pageCount={Math.min(data.total_pages, 500)}
             forcePage={page - 1}
             previousLabel="<"
             pageClassName="page-item"
@@ -76,6 +89,28 @@ const MoviePage = () => {
             activeClassName="active"
             renderOnZeroPageCount={null}
           />
+          <div className="page-input">
+            <input
+              type="text"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  submitPage();
+                }
+              }}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                if (isNaN(val)) {
+                  setInputPage(1);
+                } else {
+                  setInputPage(val);
+                }
+              }}
+              placeholder={page}
+              value={inputPage}
+            />
+            <p className="total-pages">/{Math.min(data.total_pages, 500)}</p>
+            <button onClick={submitPage}>페이지 검색</button>
+          </div>
         </div>
       ) : (
         <NotFoundMoviesPage />
