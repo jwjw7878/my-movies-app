@@ -1,0 +1,17 @@
+.not-found-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.not-found-banner a {
+  text-decoration: underline;
+  color: red;
+}
+
+@media (max-width: 576px) {
+  .not-found-banner h1 {
+    font-size: 20px;
+  }
+}

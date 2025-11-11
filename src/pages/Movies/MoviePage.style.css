@@ -1,0 +1,58 @@
+.movies-page {
+  width: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  place-content: center;
+  place-items: center;
+  gap: 50px;
+  width: 90%;
+  margin: 50px auto;
+}
+.movies-page h1 {
+  margin: 20px 100px;
+}
+.movies-page h2 {
+  font-size: 24px;
+  margin: 0 100px;
+}
+.movies-page span {
+  color: red;
+}
+.movies-page .num {
+  display: none;
+}
+.movies-page .top-banner {
+  display: none;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+  gap: 10px;
+}
+.pagination .active .page-link {
+  background-color: red;
+  color: white;
+  border: none;
+}
+.page-link {
+  color: red;
+}
+.page-link:hover {
+  color: black;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

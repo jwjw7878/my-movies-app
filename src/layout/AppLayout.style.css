@@ -9,6 +9,7 @@ header {
   font-family: "Bebas Neue", sans-serif;
   background-color: black;
   overflow-x: hidden;
+  width: 100%;
   justify-content: space-between;
 }
 header .logo-menu {
@@ -54,6 +55,7 @@ header .search-area {
   color: white;
   background-color: transparent;
   border-bottom: 2px solid white;
+  font-family: Arial, sans-serif;
   transition: all 0.3s ease-out;
 }
 .search-area .profile-icon {

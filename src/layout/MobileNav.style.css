@@ -3,7 +3,7 @@
 }
 .mobile-input-area {
   display: flex;
-  justify-content: center;
+
   align-items: center;
 }
 .mobile-input-area .mobile-input {
@@ -12,6 +12,7 @@
   outline: none;
   color: white;
   background-color: transparent;
+  width: 80%;
   border-bottom: 2px solid white;
 }
 
@@ -20,7 +21,7 @@
     width: 50%;
     padding: 20px 10px;
     display: block;
-    position: absolute;
+    position: fixed;
     top: 80px;
     right: 0;
     z-index: 20;
