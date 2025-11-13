@@ -7,12 +7,12 @@ import { useMoviesRecommend } from "../../../hooks/useMovieRecommend";
 import MovieCard from "../../../common/MovieCard/MovieCard";
 
 const MovieRecommend = ({ id }) => {
-  const { data } = useMoviesRecommend(id);
-  console.log(data);
+  const { data = [] } = useMoviesRecommend(id);
+
   return (
     <div className="recommend-container">
       <h2 className="recommend-title">Recommend Movies</h2>
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         <Carousel
           infinite={true}
           autoPlay={true}
