@@ -6,6 +6,7 @@ import Alert from "@mui/material/Alert";
 import { CircularProgress } from "@mui/material";
 import { ratingGraph } from "../../constants/ratingGraph";
 import { MdStarRate } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
 import { FaPlus, FaMinus, FaClock } from "react-icons/fa6";
 import { HiOutlineFilm } from "react-icons/hi";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -71,6 +72,10 @@ const MovieDetailPage = () => {
               <li className="detail-genre">{g.name}</li>
             ))}
           </ul>
+          <div className="detail-popularity">
+            <IoIosPeople />
+            {data.popularity}
+          </div>
           <div className="detail-rating">
             <div className="graph">
               <div

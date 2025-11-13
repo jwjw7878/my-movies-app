@@ -2,12 +2,26 @@ import React from "react";
 import YouTube from "react-youtube";
 import { useMovieVideo } from "../../../hooks/useMovieVideo";
 import "./MoviePreview.style.css";
+import { CircularProgress } from "@mui/material";
 
 const MoviePreview = ({ id, setPopup }) => {
-  const { data } = useMovieVideo(id);
+  const { data, isLoading } = useMovieVideo(id);
   const videos = data || [];
   const videoId = videos.length > 0 ? videos[0].key : null;
 
+  if (isLoading)
+    return (
+      <CircularProgress
+        size={100}
+        style={{
+          color: "red",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    );
   const opts = {
     playerVars: {
       autoplay: 1,

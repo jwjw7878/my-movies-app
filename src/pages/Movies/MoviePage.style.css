@@ -25,6 +25,24 @@
   width: 80%;
   margin: 20px auto;
 }
+.movies-page select {
+  border-radius: 12px;
+  padding: 10px;
+  background: #e30e0e;
+  background: linear-gradient(
+    90deg,
+    rgba(227, 14, 14, 1) 0%,
+    rgba(227, 87, 48, 1) 50%,
+    rgba(222, 55, 9, 1) 100%
+  );
+  color: white;
+}
+select option {
+  background-color: black;
+}
+option:hover {
+  background-color: rgb(222, 36, 36);
+}
 .movies-page span {
   color: red;
 }
