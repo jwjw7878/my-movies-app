@@ -7,13 +7,16 @@ import { CircularProgress } from "@mui/material";
 import { ratingGraph } from "../../constants/ratingGraph";
 import { MdStarRate } from "react-icons/md";
 import { FaPlus, FaMinus, FaClock } from "react-icons/fa6";
+import { HiOutlineFilm } from "react-icons/hi";
 import { FaCalendarAlt } from "react-icons/fa";
 import MovieReview from "./MovieReview/MovieReview";
 import MovieRecommend from "./MovieRecommend/MovieRecommend";
+import MoviePreview from "./MoviePreview/MoviePreview";
 const MovieDetailPage = () => {
   const { id } = useParams();
   const { data, isLoading, error, isError } = useMovieDetail(id);
   const [toggle, setToggle] = useState("review");
+  const [popup, setPopup] = useState(false);
 
   if (isLoading)
     return (
@@ -32,6 +35,7 @@ const MovieDetailPage = () => {
 
   return (
     <>
+      {popup && <MoviePreview id={id} setPopup={setPopup} />}
       <div className="detail-container">
         <div className="detail-poster">
           <div
@@ -46,6 +50,9 @@ const MovieDetailPage = () => {
               }`,
             }}
           ></div>
+          <p className="detail-preview" onClick={() => setPopup(true)}>
+            <HiOutlineFilm /> 예고편 보기
+          </p>
         </div>
         <div className="detail-info">
           <h2 className="detail-title">

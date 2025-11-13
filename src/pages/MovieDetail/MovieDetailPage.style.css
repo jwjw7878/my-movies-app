@@ -3,13 +3,29 @@
   width: 90%;
   margin: 60px auto;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 .detail-container .detail-poster {
   width: 40%;
 }
+.detail-container .detail-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px auto;
+  width: 40%;
+  gap: 10px;
+  border-radius: 12px;
+  padding: 10px 15px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
 .detail-container .detail-img {
   width: 80%;
+  margin: auto;
   height: 400px;
   background-repeat: no-repeat;
   background-size: contain;
@@ -109,6 +125,7 @@
 .menu-toggle .menu-recommend {
   width: 50%;
   padding: 10px;
+  font-size: 28px;
   background-color: white;
   color: black;
   text-align: center;
@@ -123,4 +140,45 @@
 .menu-review.active {
   background-color: red;
   color: white;
+}
+
+@media (max-width: 600px) {
+  .detail-container .detail-img {
+    height: 250px;
+  }
+  .detail-container .detail-title {
+    font-size: 20px;
+  }
+  .detail-container .detail-overview {
+    font-size: 12px;
+  }
+  .detail-container .detail-preview {
+    width: 80%;
+    font-size: 10px;
+  }
+  .detail-container .detail-adult.false,
+  .detail-adult.true {
+    font-size: 18px;
+    padding: 3px;
+  }
+  .detail-container .detail-genres {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+  .detail-container .detail-rating {
+    margin-bottom: 10px;
+  }
+  .detail-container .detail-red {
+    font-size: 10px;
+    padding: 2px;
+    width: 65px;
+    gap: 4px;
+  }
+  .detail-container .detail {
+    font-size: 10px;
+  }
+  .menu-toggle .menu-review,
+  .menu-toggle .menu-recommend {
+    font-size: 14px;
+  }
 }
