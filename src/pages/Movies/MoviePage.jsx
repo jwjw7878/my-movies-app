@@ -7,24 +7,62 @@ import NotFoundpage from "../NotFoundpage/NotFoundpage";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
 import NotFoundMoviesPage from "../NotFoundpage/NotFoundMoviesPage";
+import { useGenreforIds } from "../../hooks/useGenreIds";
 
 const MoviePage = () => {
   const [page, setPage] = useState(1);
   const [query] = useSearchParams();
   const keyword = query.get("q");
+  const [renderData, setRenderData] = useState([]);
   const [inputPage, setInputPage] = useState(1);
+  const [selectMovie, setSelectMovie] = useState("basic");
+  const [selectGenre, setSelectGenre] = useState("");
 
   const handlePageClick = ({ selected }) => {
     setPage(selected + 1);
   };
+  const { data: genre } = useGenreforIds();
 
   const { data, isLoading, error, isError } = useSearchMovies({
     keyword,
     page,
+    selectMovie,
+    selectGenre,
   });
+
+  useEffect(() => {
+    if (data?.results) {
+      setRenderData(data.results);
+    }
+  }, [data]);
+
+  const filterData = () => {
+    if (!data?.results) return;
+
+    let filtered = [...data.results];
+    if (selectGenre) {
+      const genreId = Number(selectGenre);
+      filtered = filtered.filter((movie) => movie.genre_ids.includes(genreId));
+    }
+    if (selectMovie === "popularity-high") {
+      filtered.sort((a, b) => b.popularity - a.popularity);
+    } else if (selectMovie === "popularity-low") {
+      filtered.sort((a, b) => a.popularity - b.popularity);
+    } else if (selectMovie === "top_rated") {
+      filtered.sort((a, b) => b.vote_average - a.vote_average);
+    }
+
+    setRenderData(filtered);
+  };
+  useEffect(() => {
+    filterData();
+  }, [selectGenre, selectMovie, data]);
+
   // 키워드 변경 시 페이지네이션 초기화
   useEffect(() => {
     setPage(1);
+    setSelectGenre("");
+    setSelectMovie("basic");
   }, [keyword]);
 
   // 페이지 검색
@@ -39,7 +77,6 @@ const MoviePage = () => {
   useEffect(() => {
     setInputPage(page);
   }, [page]);
-
   if (isLoading)
     return (
       <CircularProgress
@@ -57,14 +94,35 @@ const MoviePage = () => {
 
   return (
     <>
-      {data.results.length > 0 ? (
+      {renderData?.length > 0 ? (
         <div className="movies-page">
           <h1>Moives</h1>
+          <div className="select-bar">
+            <select onChange={(e) => setSelectMovie(e.target.value)}>
+              <option value="basic">정렬</option>
+              <option value="popularity-high">인기 높은순</option>
+              <option value="popularity-low">인기 낮은순</option>
+              <option value="top_rated">평점순</option>
+            </select>
+            <select
+              onChange={(e) => {
+                setSelectGenre(e.target.value);
+              }}
+            >
+              <option value="">장르별 목록</option>
+              {genre.map((g) => (
+                <option value={g.id}>{g.name}</option>
+              ))}
+            </select>
+          </div>
           <h2>
-            <span>{data.total_results}</span>개의 영화가 존재합니다.
+            <span>
+              {selectGenre !== "" ? renderData.length : data?.total_results}
+            </span>
+            개의 영화가 존재합니다.
           </h2>
           <div className="container">
-            {data?.results?.map((movie, idx) => (
+            {renderData?.map((movie, idx) => (
               <MovieCard movie={movie} key={idx} />
             ))}
           </div>

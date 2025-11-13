@@ -1,10 +1,19 @@
 import "./MovieCard.style.css";
 import { useGenreforIds } from "../../hooks/useGenreIds";
+import { IoIosPeople } from "react-icons/io";
 import { FaArrowDown, FaArrowUp, FaCalendarAlt } from "react-icons/fa";
-import { PiFilmSlate } from "react-icons/pi";
 import { MdStarRate } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { ratingGraph } from "../../constants/ratingGraph";
+
 const MovieCard = ({ movie, num }) => {
   const { data, isLoading } = useGenreforIds();
+  const navigate = useNavigate();
+
+  const moveToDetail = (id) => {
+    navigate(`/movies/${id}`);
+  };
+
   if (isLoading) return <p>...Loading</p>;
 
   const genreIdforName = (genre_ids) => {
@@ -14,21 +23,9 @@ const MovieCard = ({ movie, num }) => {
     return genreName;
   };
 
-  // 평점 기능
-  const ratingGraph = (rated) => {
-    if (rated >= 8) {
-      return "green";
-    } else if (rated >= 7) {
-      return "light-green";
-    } else if (rated >= 5) {
-      return "yellow";
-    } else {
-      return "red";
-    }
-  };
-
   return (
     <div
+      onClick={() => moveToDetail(movie.id)}
       className="movie-card"
       style={{
         backgroundImage: `${
@@ -77,13 +74,14 @@ const MovieCard = ({ movie, num }) => {
             {Number(movie.vote_average).toFixed(1)}
           </p>
         </div>
+        <div>
+          <IoIosPeople />
+          {movie.popularity}
+        </div>
         <div>{movie.adult ? "18" : ""}</div>
         <div className="top-banner">
           <h3>Top</h3>
           <p>20</p>
-        </div>
-        <div className="detail">
-          <PiFilmSlate /> Detail
         </div>
       </div>
     </div>

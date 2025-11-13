@@ -1,0 +1,126 @@
+.detail-container {
+  display: flex;
+  width: 90%;
+  margin: 60px auto;
+  justify-content: center;
+  align-items: center;
+}
+.detail-container .detail-poster {
+  width: 40%;
+}
+.detail-container .detail-img {
+  width: 80%;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.detail-container .detail-info {
+  width: 40%;
+  height: 100%;
+}
+.detail-container .detail-title {
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail-container .detail-title > .detail-adult {
+  font-size: 20px;
+  color: black;
+  padding: 10px;
+  border-radius: 6px;
+}
+.detail-adult.true {
+  background-color: red;
+}
+.detail-adult.false {
+  background-color: #fff17a;
+}
+.detail-container .detail-overview {
+  font-size: 24px;
+}
+.detail-container .detail-genres {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+.detail-genres .detail-genre {
+  padding: 4px;
+  border: 2px solid white;
+  border-radius: 6px;
+}
+.detail-container .detail-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+.detail-rating .rated-score {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+}
+.detail-rating .graph {
+  margin: 10px 0;
+  width: 80%;
+  height: 8px;
+  border: 1px solid white;
+}
+.graph .green {
+  background: linear-gradient(to right, #00a000, #00ff00);
+}
+
+.graph .light-green {
+  background: linear-gradient(to right, #90ee90, #c8ffc8);
+}
+
+.graph .yellow {
+  background: linear-gradient(to right, #f6d200, #fff17a);
+}
+
+.graph .red {
+  background: linear-gradient(to right, #d10000, #ff6b6b);
+}
+.detail-container .detail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.detail .detail-red {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  gap: 8px;
+  color: white;
+  padding: 3px 4px;
+  background-color: red;
+  border-radius: 6px;
+}
+.menu-toggle {
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+.menu-toggle .menu-review,
+.menu-toggle .menu-recommend {
+  width: 50%;
+  padding: 10px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-recommend {
+  border-left: 2px solid black;
+}
+
+.menu-recommend.active,
+.menu-review.active {
+  background-color: red;
+  color: white;
+}

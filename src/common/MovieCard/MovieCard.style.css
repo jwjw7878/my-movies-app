@@ -113,15 +113,3 @@
 .graph .red {
   background: linear-gradient(to right, #d10000, #ff6b6b);
 }
-
-.overlay .detail {
-  padding: 10px;
-  background-color: white;
-  color: black;
-  width: 50%;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
