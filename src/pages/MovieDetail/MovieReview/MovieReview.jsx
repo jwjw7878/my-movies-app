@@ -18,7 +18,7 @@ const MovieReview = ({ id }) => {
               const open = openContents[i] || false;
               const long = list.content.length > 330;
               return (
-                <li>
+                <li key={list.id}>
                   <h4>{list.author}</h4>
                   <p>{list.created_at.slice(0, 10)}</p>
 

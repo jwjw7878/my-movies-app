@@ -25,6 +25,7 @@ const MovieCard = ({ movie, num }) => {
 
   return (
     <div
+      key={movie.id}
       onClick={() => moveToDetail(movie.id)}
       className="movie-card"
       style={{
@@ -37,7 +38,7 @@ const MovieCard = ({ movie, num }) => {
         }`,
       }}
     >
-      <p className="num">{num + 1}</p>
+      <p className="num">{Number(num + 1)}</p>
       <div className="overlay">
         {movie.adult ? (
           <div className="adult true">
@@ -53,8 +54,8 @@ const MovieCard = ({ movie, num }) => {
         </p>
         <h1 className="overlay-title">{movie.title}</h1>
         <ul className="overlay-genre">
-          {genreIdforName(movie.genre_ids).map((genre) => (
-            <li>{genre.name}</li>
+          {genreIdforName(movie.genre_ids).map((genre, i) => (
+            <li key={i}>{genre.name}</li>
           ))}
         </ul>
         <div className="overlay-rating">

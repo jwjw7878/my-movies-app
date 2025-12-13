@@ -29,9 +29,14 @@
   align-items: center;
   gap: 20px;
   font-size: 32px;
+  height: 10%;
 }
 .banner p {
   font-size: 28px;
+  height: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .banner .banner-genre {
   display: flex;

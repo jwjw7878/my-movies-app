@@ -19,7 +19,7 @@ const MoviesSlider = ({ data, title }) => {
         responsive={responsive}
       >
         {data.results.map((movie, idx) => (
-          <MovieCard movie={movie} key={idx} num={idx} />
+          <MovieCard movie={movie} num={idx} />
         ))}
       </Carousel>
     </div>

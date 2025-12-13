@@ -3,7 +3,6 @@ import "./MoviePage.style.css";
 import { useSearchParams } from "react-router-dom";
 import { useSearchMovies } from "../../hooks/useSearchMovies";
 import { Alert, CircularProgress } from "@mui/material";
-import NotFoundpage from "../NotFoundpage/NotFoundpage";
 import MovieCard from "../../common/MovieCard/MovieCard";
 import ReactPaginate from "react-paginate";
 import NotFoundMoviesPage from "../NotFoundpage/NotFoundMoviesPage";
@@ -110,8 +109,10 @@ const MoviePage = () => {
               }}
             >
               <option value="">장르별 목록</option>
-              {genre.map((g) => (
-                <option value={g.id}>{g.name}</option>
+              {genre.map((g, i) => (
+                <option key={i} value={g.id}>
+                  {g.name}
+                </option>
               ))}
             </select>
           </div>

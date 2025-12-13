@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: space-between;
 }
-.detail-container .detail-title > .detail-adult {
+.detail-container .detail-title .detail-adult {
   font-size: 20px;
   color: black;
   padding: 10px;

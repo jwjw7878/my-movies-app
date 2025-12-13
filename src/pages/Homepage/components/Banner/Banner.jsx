@@ -56,8 +56,8 @@ const Banner = () => {
         </h1>
         <p>{data?.results[0].overview}</p>
         <ul className="banner-genre">
-          {data?.results[0].genre_ids.map((g) => (
-            <li>{genreName[g]}</li>
+          {data?.results[0].genre_ids.map((g, i) => (
+            <li key={i}>{genreName[g]}</li>
           ))}
         </ul>
       </div>
